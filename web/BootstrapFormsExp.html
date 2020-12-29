@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Forms Examples</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="container" > 
+            <h1>Inline Form  Without labels</h1>
+
+            <form class="form-inline">
+
+                <input type="text" name="username" class="form-control mr-3" placeholder="Enter Username" />
+
+                <input type="password" name="password" class="form-control mr-3" placeholder="Enter Password" />
+
+                <input type="button" value="Login" class="btn btn-success" />
+
+            </form>
+
+            <hr>
+            <h1>Inline form with Labels</h1>
+
+            <form class="form-inline">
+
+                <label for="username" class="mr-2">Enter Username</label>
+                <input type="text" name="username" class="form-control mr-2" id="username"  />
+
+                <label for="password" class="mr-2">Enter password</label>
+                <input type="password" name="password" class="form-control mr-2" id="password"  />
+
+                <input type="button" value="Login"  class="btn btn-primary"/>
+
+            </form>
+
+            <hr>
+            <h1>Vertical form with Labels</h1>
+
+            <form>
+
+                <div class="form-group">
+                    <label for="username" >Enter Username</label>
+                    <input type="text" name="username" class="form-control" id="username"  />
+                </div>
+
+                <div class="form-group">
+                    <label for="password" >Enter password</label>
+                    <input type="password" name="password" class="form-control" id="password"  />
+                </div>
+
+                <div class="form-group">
+                    <label>Enter Email</label>
+                    <input type="email" class="form-control" id="email" name="email" />
+
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Choose Date of birth</label>
+                    <input type="date" id="date" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Choose Time</label>
+                    <input type="time" id="time" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label for="city">Select City</label>
+
+                    <select class="form-control" id="city">
+                        <option>Amritsar</option>
+                        <option>Delhi</option>
+                        <option>Patiala</option>
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label>Select Gender</label>
+                    <input type="radio" name="gender"  value="gender"/>Female
+                    <input type="radio" name="gender"  value="gender"/>Male
+
+                </div>
+
+                <div class="form-group">
+                    <input type="button" value="Login"  class="btn btn-primary"/>
+                </div>
+            </form>
+
+            
+            
+            
+             <hr>
+            <h1>Vertical form with Labels</h1>
+
+            <form>
+
+                <div class="form-group form-row">
+                    <label for="username" class="col-sm-3" >Enter Username</label>
+                    <input type="text" name="username" class="form-control col-sm-9" id="username"  />
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="password" class="col-sm-3">Enter password</label>
+                    <input type="password" name="password" class="form-control col-sm-9" id="password"  />
+                </div>
+
+                <div class="form-group form-row">
+                    <label class="col-sm-3">Enter Email</label>
+                    <input type="email" class="form-control col-sm-9" id="email" name="email" />
+
+                </div>
+
+                
+
+                <div class="form-group form-row">
+                    <input type="button" value="Login"  class="btn btn-primary col-sm-9 offset-sm-3"/>
+                </div>
+            </form>
+
+
+
+        </div>
+
+    </body>
+</html>

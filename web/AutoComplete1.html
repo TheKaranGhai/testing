@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+        <style>
+            
+            #sec{
+                
+                background: rgba(0,0,0,0.6);
+                color:#ffffff;
+                position: absolute;
+                width:400px;
+            }
+            
+            #search
+            {
+                width:400px;
+            }
+                
+            
+            .searchresult
+            {
+                margin:5px;
+                cursor: pointer;
+            }
+            .searchresult:hover{
+                
+                color:red;
+                text-decoration: underline;
+            }
+            
+            
+            
+            
+        </style>
+        
+        
+        <script>
+
+            function searchfn()
+            {
+                var keyword=document.getElementById("search").value;
+                
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if(xmlhttp.readyState==4 && xmlhttp.status==200)
+                    {
+                        var res=xmlhttp.responseText;
+                        res=res.trim();
+                        var jsonobj=JSON.parse(res);   
+                         
+                        var jsonarr=jsonobj["ans"];
+                        
+                        var ans="";
+                        
+                        for(var i=0;i<jsonarr.length;i++)
+                        {
+                            var o=jsonarr[i];
+                            
+                            ans+="<p class=\"searchresult\" onclick=\"task('"+o.username+"')\" >"+o.username+"</p>";
+                            
+                        }
+                        
+                        document.getElementById("sec").innerHTML=ans;
+                        
+            
+                    }
+                };
+                
+                xmlhttp.open("get","search?keyword="+keyword,true);
+                xmlhttp.send();
+                
+            }
+            
+            function task(username)
+            {
+                alert(username);
+            }
+            
+
+        </script>
+
+
+    </head>
+    <body>
+
+        <div class="container">
+
+            <h1>Auto Complete</h1>
+            <div class="form-group">
+                <input type="text" onkeyup="searchfn()" id="search" placeholder="Search" class="form-control" />
+
+                <div id="sec" >
+                </div>
+                
+                
+            </div>
+            
+            
+            <h1>This is some content</h1>
+            <h1>This is some content</h1>
+            <h1>This is some content</h1>
+            <h1>This is some content</h1>
+            <h1>This is some content</h1>
+            <h1>This is some content</h1>
+            <h1>This is some content</h1>
+            <h1>This is some content</h1>
+
+
+
+
+        </div>        
+
+
+
+    </body>
+</html>

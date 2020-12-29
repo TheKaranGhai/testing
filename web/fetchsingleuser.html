@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script>
+            function fetchuser()
+            {
+                var username = document.getElementById("username").value;
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.onreadystatechange = function ()
+                {
+                    if (xhr.readyState === 4 && xhr.status == 200)
+                    {
+                        //get response from server
+                        var res = xhr.responseText;
+                        res = res.trim();
+                        var jsonobj = JSON.parse(res);
+
+                        var jsonarr = jsonobj["ans"];
+
+                        if (jsonarr.length == 0)
+                        {
+                            alert("user not present");
+                        } else
+                        {
+                            var o = jsonarr[0];
+                            document.getElementById("username1").innerHTML = o.username;
+                            document.getElementById("password").innerHTML = o.password;
+                            document.getElementById("email").innerHTML = o.email;
+                            document.getElementById("photo").src=o.photo;
+
+
+                        }
+
+
+                    }
+                };
+
+                xhr.open("GET", "fetchsingleuser?username=" + username, true);
+                xhr.send();
+
+
+
+            }
+        </script>        
+
+    </head>
+    <body>
+
+        <div class="container">
+
+            <h1>Fetch single user</h1>
+
+
+            <input type="text" id="username" placeholder="Enter Username" class="form-control" /><br>
+            <button class="btn btn-primary" onclick="fetchuser()">Fetch Detail</button>
+
+
+            <h1 id="username1" ></h1>
+            <h1 id="password" ></h1>
+            <h1 id="email" ></h1>
+            <img id="photo" width="100" height="100" />
+
+
+        </div>
+
+    </body>
+</html>

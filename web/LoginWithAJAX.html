@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script>
+
+            function loginwithajax()
+            {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+
+                if (username == "" || password == "")
+                {
+                    document.getElementById("errormessage").innerHTML = "Please enter values";
+                    document.getElementById("errormessage").style.color = "red";
+                } else
+                {
+                    var xmlhttp = new XMLHttpRequest();
+
+                    xmlhttp.onreadystatechange = function ()
+                    {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                        {
+                            var res = xmlhttp.responseText;
+                            res = res.trim();
+
+                            if (res == "success")
+                            {
+                                document.getElementById("errormessage").innerHTML = "Login success";
+                                document.getElementById("errormessage").style.color = "green";
+                                
+                                setInterval(changepage,3000);  
+
+                            } else
+                            {
+                                document.getElementById("errormessage").innerHTML = "Invalid Username/Password";
+                                document.getElementById("errormessage").style.color = "red";
+                            }
+                        }
+                    };
+
+                    var querystring = "username=" + username + "&password=" + password;
+
+                    xmlhttp.open("get", "loginwithajax?" + querystring, true);
+                    xmlhttp.send();
+
+                }
+
+            }
+
+
+            function changepage()
+            {
+
+                //open homepage.html page
+                location.href = "homepage.html";
+            }
+
+        </script>
+    </head>
+    <body>
+
+        <div class="container">
+
+            <h1 class="jumbotron">Login Form</h1>
+
+            <form>
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="Enter username" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Enter password" class="form-control" />
+                </div>
+
+                <h4 id="errormessage"></h4>
+
+                <div class="form-group">
+                    <input type="button" value="Login" class="btn btn-success" onclick="loginwithajax()" /> 
+                </div>
+
+            </form>
+
+        </div>
+        
+
+    </body>
+</html>

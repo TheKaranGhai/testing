@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            
+            .c1
+            {
+                border:4px solid black;
+            }
+            
+             .c2
+            {
+                border:4px solid red;
+                border-radius:40px;
+            }
+            
+            
+        </style>
+        <script>
+            
+    
+           function changeclass(obj)
+           {
+               obj.className="c2";
+               
+           }
+           
+           function changeclassb(obj)
+           {
+               obj.className="c1";
+           }
+    
+            
+            
+            
+        </script>
+        
+        
+    </head>
+    <body>
+        <div class="container">
+            <h1>Image Gallery</h1>
+            <div class="row">
+                <div class="col-sm-12">
+                    <img src="images/flowers.jpg" class="c1" width="300" height="300" onmouseenter="changeclass(this)" onmouseout="changeclassb(this)"  />
+                    <img src="images/para3.jpg" class="c1" width="300" height="300" onmouseenter="changeclass(this)"  onmouseout="changeclassb(this)" />
+                    <img src="images/para4.jpg" class="c1" width="300" height="300" onmouseenter="changeclass(this)"  onmouseout="changeclassb(this)" />
+                    <img src="images/pattern1.jpg" class="c1" width="300" height="300" onmouseenter="changeclass(this)"  onmouseout="changeclassb(this)" />
+                    
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>

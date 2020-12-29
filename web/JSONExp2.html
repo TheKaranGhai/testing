@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script>
+
+            function jsonarray()
+            {
+                var jsonarr = [
+                    {"rollno": 1, "name": "abc", "age": 12},
+                    {"rollno": 2, "name": "mno", "age": 13},
+                    {"rollno": 3, "name": "xyz", "age": 14},
+                    {"rollno": 4, "name": "pqr", "age": 15}
+                ];
+
+                var ans = "";
+                for (var i = 0; i < jsonarr.length; i++)
+                {
+                    var jsonobj = jsonarr[i];
+
+                    ans += "<h1>" + jsonobj.rollno + "</h1>";
+                    ans += "<h1>" + jsonobj.name + "</h1>";
+                    ans += "<h1>" + jsonobj.age + "</h1>";
+
+                    // console.log(jsonobj.rollno);
+                    // console.log(jsonobj.name);
+                    // console.log(jsonobj.age);
+
+                }
+                document.getElementById("sec").innerHTML = ans;
+
+
+            }
+
+            function jsonarrayfromobject()
+            {
+
+                var jsonobj = {"ans": [
+                        {"rollno": 1, "name": "abc", "age": 12},
+                        {"rollno": 2, "name": "xyz", "age": 13},
+                        {"rollno": 3, "name": "mno", "age": 14}
+                    ]};
+
+                //get array from from object
+                var jsonarr = jsonobj["ans"];
+
+                var ans = "<table class=\"table table-striped\" >";
+
+                ans += "<tr>";
+                ans += "<th>Rollno</th>";
+                ans += "<th>Name</th>";
+                ans += "<th>Age</th>";
+                ans += "</tr>";
+
+                for (var i = 0; i < jsonarr.length; i++)
+                {
+                    var o = jsonarr[i];
+                    ans += "<tr>";
+                    ans += "<td>"+o.rollno+"</td>";
+                    ans += "<td>"+o.name+"</td>";
+                    ans += "<td>"+o.age+"</td>";
+                    ans += "</tr>";
+                }
+
+                ans += "</table>";
+                
+                console.log(ans);
+                
+                document.getElementById("sec1").innerHTML=ans;
+
+            }
+
+
+        </script>
+    </head>
+    <body>
+
+        
+        <button onclick="jsonarray()" >Click</button>
+
+        <div id="sec" style="border:1px solid black;margin:10px;" ></div>
+
+
+        <button onclick="jsonarrayfromobject()" >generate table</button>
+
+        <div id="sec1" style="border:1px solid black;margin:10px;" ></div>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function sendajaxrequest()
+            {
+                var number=document.getElementById("number").value;
+                
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if(xmlhttp.readyState==4 && xmlhttp.status==200)
+                    {
+                        var res=xmlhttp.responseText;
+                        document.getElementById("sec").innerHTML=res; 
+                    }
+                };
+                
+                xmlhttp.open("get","ajaxexplist?number="+number,true);
+                xmlhttp.send();
+                
+            }
+
+
+        </script>
+    </head>
+    <body>
+
+        <input type="text" id="number" placeholder="Enter Number" />
+
+        <button onclick="sendajaxrequest()" >SEND</button>
+
+        <div id="sec">
+
+
+        </div>
+        
+        <img src="images/para3.jpg" width="200" height="200"  />
+
+    </body>
+</html>

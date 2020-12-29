@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>set interval</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+        <script>
+
+
+            function startalert()
+            {
+                setInterval(task, 3000);
+            }
+
+
+            function task()
+            {
+                alert("Hello");
+            }
+
+
+            function showalertonce()
+            {
+                setTimeout(task, 5000);
+            }
+
+
+            var t=10;
+            var interval;
+            
+            function starttimer()
+            {
+                 interval=setInterval(timer,1000);
+            }
+            
+            function timer()
+            {
+                document.getElementById("timertext").innerHTML=t;
+                t--;
+                if(t==-1)
+                {
+                    clearInterval(interval);
+                }
+                
+            }
+
+
+
+
+        </script>
+    </head>
+    <body>
+
+        <div class="container">
+            <h1>set Intervale</h1>
+            <button onclick="startalert()" class="btn btn-success">Start Hello alert</button>
+
+            <button onclick="showalertonce()" class="btn btn-primary" >show alert only once after delay</button>
+
+            <hr>
+
+            <h1>TIMER EXAMPLE</h1>
+
+            <button onclick="starttimer()" class="btn btn-danger" >Start Timer</button>
+            <h1 id="timertext" ></h1>
+
+
+
+        </div>
+    </body>
+</html>

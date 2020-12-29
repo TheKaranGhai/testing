@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>javaScript Example</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script>
+
+            function go()
+            {
+                console.log("Hello world");
+               
+            }
+          
+            function go1()
+            {
+                alert("Hello world");
+            }
+            
+            function go2()
+            {
+                alert("This alert is from div");
+                
+                
+            }
+            
+            function changetext()
+            {
+                document.getElementById("head").innerHTML="Hello This is new Content........."+Math.random();                       
+            }
+            
+            function changeinputtext()
+            {
+                document.getElementById("username").value="Hello";
+            }
+            
+
+
+
+        </script>
+
+
+    </head>
+    <body>
+
+        <div class="container">
+
+            <h1>Function Exp</h1>
+
+            <button class="btn btn-success" onclick="go()" >Console print</button>
+
+            <input type="button" value="Alert" class="btn btn-primary" onclick="go1()"   />
+            
+            <div style="background-color: red;margin:10px;" onclick="go2()" >This is div</div>
+            
+            
+            <hr>
+            
+            <h1 id="head" >This is some content</h1>
+            
+            
+            <button class="btn btn-primary" onclick="changetext()" >Change Content</button>
+            
+            <hr>
+            
+            <input type="text" placeholder="Enter Username" value="Java" class="form-control" id="username" />
+            <br>
+            <button onclick="changeinputtext()" class="btn btn-primary" >Change input text</button>
+            
+            
+        </div>
+
+
+    </body>
+</html>

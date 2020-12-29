@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script>
+
+
+            function textcopy(obj)
+            {
+
+                document.getElementById("content").innerHTML = obj.value;
+            }
+
+            function changecss()
+            {
+                document.getElementById("sec").style.background = "rgb(0,0,0)";
+                document.getElementById("sec").style.width = "200px";
+                document.getElementById("sec").style.height = "200px";
+                document.getElementById("sec").style.color = "white";
+                document.getElementById("sec").style.borderTop = "4px solid red";
+                document.getElementById("sec").style.textAlign = "center";
+            }
+            
+            function go(obj)
+            {
+                var val=obj.value;
+                alert(val);
+                
+                
+                
+            }
+
+
+        </script>
+
+
+    </head>
+    <body>
+
+        <div class="container">
+            <h1>onkeyup</h1>
+
+            <input type="text" id="val" placeholder="Enter text" onkeyup="textcopy(this)" /> 
+            <h2 id="content" ></h2>
+
+            <hr>
+            <h1>CSS Javascript</h1>
+
+            <button onclick="changecss()">Change css</button>
+            <div id="sec">
+
+                this is div
+
+            </div>
+
+            <hr>
+
+            <h1>onchange</h1>
+
+
+            <select onchange="go(this)" >
+                <option>solid</option>
+                <option>dotted</option>
+                <option>dashed</option>
+                <option>groove</option>
+            </select>
+
+
+            <div id="sec1" style="background: red;width:200px;height:200px;">
+                
+                
+            </div>
+            
+
+
+        </div>
+
+
+    </body>
+</html>

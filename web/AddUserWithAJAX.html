@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+        <script>
+
+            function adduser()
+            {
+                var formdata = new FormData();
+
+                var controls = document.getElementById("form1").elements;
+                var flag = 0;
+
+                for (var i = 0; i < controls.length; i++)
+                {
+                    //if name is given to every input type
+                    if (controls[i].name == "" || controls[i].name == null)
+                    {
+                        flag = 1;
+                    }
+                    if (controls[i].type == "file")
+                    {
+                        //if file is selected by user
+                        if (controls[i].files.length > 0)
+                        {
+                            formdata.append(controls[i].name, controls[i].files[0]);
+                        } else
+                        {
+                            flag = 2;
+                        }
+                    } else
+                    {
+                        // for input type text ,password, email
+                        formdata.append(controls[i].name, controls[i].value);
+                    }
+                }
+                if (flag == 1)
+                {
+                    alert("CHECK: --> Give name attribute to all controls in form");
+                } else if (flag == 2)
+                {
+                    alert("CHECK: --> Select Files for file controls");
+                } else
+                {
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.onreadystatechange = function ()
+                    {
+                        if (xhr.readyState === 4 && xhr.status == 200)
+                        {
+                            //get response from server
+                            var res = xhr.responseText;
+
+                            alert(res);
+                            console.log(res);
+                            res = res.trim();
+                            if (res == "success")
+                            {
+                                document.getElementById("result").innerHTML = "Added successfuly";
+                            } else
+                            {
+                                document.getElementById("result").innerHTML = "User already exist";
+
+                            }
+
+
+                        }
+                    };
+
+                    xhr.open("POST", "adduserwithfile", true);
+
+
+                    xhr.send(formdata);
+
+                }
+
+            }
+
+            function fetchusers()
+            {
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.onreadystatechange = function ()
+                {
+                    if (xhr.readyState === 4 && xhr.status == 200)
+                    {
+                        //get response from server
+                        var res = xhr.responseText;
+                        res = res.trim();
+
+                        var jsonobj = JSON.parse(res);
+
+                        var jsonarr = jsonobj["ans"];
+
+                        var ans = "<table class=\"table table-striped\" >";
+
+                        ans += "<tr>";
+                        ans += "<th>Username</th>";
+                        ans += "<th>Password</th>";
+                        ans += "<th>Email</th>";
+                        ans += "<th>Photo</th>";
+                        ans += "</tr>";
+
+                        for (var i = 0; i < jsonarr.length; i++)
+                        {
+                            var o = jsonarr[i];
+                            ans += "<tr>";
+                            ans += "<td>" + o.username + "</td>";
+                            ans += "<td>" + o.password + "</td>";
+                            ans += "<td>" + o.email + "</td>";
+                            ans += "<td><img src=\"" + o.photo + "\" width=\"100\" height=\"100\" /></td>";
+                            ans += "</tr>";
+
+
+                        }
+
+                        ans += "</table>";
+                        
+                       document.getElementById("sec").innerHTML=ans; 
+                        
+                    }
+                };
+
+                xhr.open("GET", "getallusers", true);
+                xhr.send();
+
+
+
+            }
+
+
+
+        </script>
+
+    </head>
+    <body>
+
+
+
+        <div style="text-align: center">
+            <h1>Add Users</h1>
+            <form id="form1" >
+
+                <input type="text" name="username" placeholder="Enter Username"  /><br><br>
+                <input type="text" name="password" placeholder="Enter password"  /><br><br>
+                <input type="text" name="email" placeholder="Enter email"  /><br><br>
+                <input type="file" name="myfile"   /><br><br>
+
+            </form>
+
+            <input type="button" value="submit" onclick="adduser()" /> 
+
+            <h1 id="result"></h1>
+
+            <hr>
+
+            <button onclick="fetchusers()">Fetch Users</button>
+
+            <div id="sec" style="margin: 30px;border:3px solid black;">
+
+            </div>
+
+
+
+        </div>
+    </body>
+</html>

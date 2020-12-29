@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+
+            function jsonobject()
+            {
+                var jsonobj = {"rollno": 1, "name": "abc", "age": 12, "marks": 99};
+
+                console.log(jsonobj.rollno);
+                console.log(jsonobj.name);
+                console.log(jsonobj.age);
+                console.log(jsonobj.marks);
+
+                console.log("---------------");
+
+                console.log(jsonobj["rollno"]);
+                console.log(jsonobj["name"]);
+                console.log(jsonobj["age"]);
+                console.log(jsonobj["marks"]);
+
+                document.getElementById("d1").innerHTML=jsonobj.rollno;   
+
+                document.getElementById("d2").innerHTML=jsonobj.name;
+
+                document.getElementById("d3").innerHTML=jsonobj.age;
+                
+                document.getElementById("d4").innerHTML=jsonobj.marks;
+            }
+
+
+        </script>
+    </head>
+    <body>
+
+        <button onclick="jsonobject()">Click</button>
+        <h1 id="d1"></h1>
+        <h1 id="d2"></h1>
+        <h1 id="d3"></h1>
+        <h1 id="d4"></h1>
+
+
+    </body>
+</html>

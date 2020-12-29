@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <style type="text/css">
+            .spacing {
+                background-color:yellow;
+                width:100%;
+                height:100px;
+
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="spacing row">
+
+
+        </div>
+
+        <div class="container">
+
+            <div class="row" > 
+                <div class="col-sm-12">
+                <form id="form1" >
+                    <div class="form-group form-row">
+                        <label  for="username" class="col-sm-3">username</label> 
+                        <input type="text" name="username" placeholder="enter username" class="form-control col-sm-9" id="username" onblur="checkname(this)" />
+                        <span  style="color:red;" id="namespan" class="col-sm-1"></span>
+                    </div>
+                    <div class="form-group form-row">
+                        <label class="col-sm-3">password</label>
+                        <input type="password" name="password" placeholder="enter password" class="form-control col-sm-9" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="submit" class="offset-sm-3 col-sm-6"/>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>    
+    </body>
+</html>

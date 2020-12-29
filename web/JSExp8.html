@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Validations</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <style>
+            span{
+                color:red;
+                font-size: 29px;
+            }
+
+
+
+        </style>
+
+
+        <script>
+
+            function checkname(obj)
+            {
+
+                var name = obj.value;
+                if (name == "")
+                {
+                    document.getElementById("nameerror").innerHTML = "*";
+                } else
+                {
+                    document.getElementById("nameerror").innerHTML = "";
+                }
+            }
+            function checkphoneno(obj)
+            {
+                var phoneno = obj.value;
+                if (phoneno.length != 10)
+                {
+                    document.getElementById("phonenoerror").innerHTML = "Please enter valid number";
+                } else
+                {
+                    document.getElementById("phonenoerror").innerHTML = "";
+                }
+            }
+
+            function checkemail(obj)
+            {
+                var email = obj.value;
+                if (email.indexOf("@") == -1 || email.indexOf(".") == -1)
+                {
+                    document.getElementById("emailerror").innerHTML = "Please enter valid email";
+                } else
+                {
+                    document.getElementById("emailerror").innerHTML = "";
+
+                }
+
+
+            }
+
+
+
+
+
+        </script>
+    </head>
+    <body>
+
+        <div class="container">
+
+
+            <h1>Validations</h1>
+            <form>
+
+                <input type="text" id="name" onblur="checkname(this)" placeholder="Enter name" /><span id="nameerror"></span><br><br>
+
+                <input type="number" id="phoneno" onblur="checkphoneno(this)" placeholder="Enter Phoneno" /><span id="phonenoerror"></span><br><br>
+
+                <input type="email" id="email" onblur="checkemail(this)" placeholder="Enter email" /><span id="emailerror" ></span><br><br>
+
+                <input type="password" id="password" placeholder="Enter password" /><br><br>
+
+                <input type="button" value="Submit" class="btn btn-success" />
+
+            </form>
+
+        </div>
+
+    </body>
+</html>

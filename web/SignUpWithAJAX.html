@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script>
+
+            function signupwithajax()
+            {
+                var formdata = new FormData();
+
+                var controls = document.getElementById("signupform").elements;
+                var flag = 0;
+
+                for (var i = 0; i < controls.length; i++)
+                {
+                    //if name is given to every input type
+                    if (controls[i].name == "" || controls[i].name == null)
+                    {
+                        flag = 1;
+                    }
+                    if (controls[i].type == "file")
+                    {
+                        //if file is selected by user
+                        if (controls[i].files.length > 0)
+                        {
+                            formdata.append(controls[i].name, controls[i].files[0]);
+                        } else
+                        {
+                            flag = 2;
+                        }
+                    } else
+                    {
+                        // for input type text ,password, email
+                        formdata.append(controls[i].name, controls[i].value);
+                    }
+                }
+                if (flag == 1)
+                {
+                    alert("CHECK: --> Give name attribute to all controls in form");
+                } else if (flag == 2)
+                {
+                    alert("CHECK: --> Select Files for file controls");
+                } else
+                {
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.onreadystatechange = function ()
+                    {
+                        if (xhr.readyState === 4 && xhr.status == 200)
+                        {
+                            //get response from server
+                            var res = xhr.responseText;
+
+                            res = res.trim();
+                            if (res == "success")
+                            {
+                                document.getElementById("errormessage").innerHTML = "Signup Successful. <a href=\"LoginWithAJAX.html\">Click Here</a> to Login";
+                                document.getElementById("errormessage").style.color = "green";
+
+                            } else
+                            {
+                                document.getElementById("errormessage").innerHTML = "User Already Exist";
+                                document.getElementById("errormessage").style.color = "red";
+                            }
+
+
+                        }
+                    };
+
+                    xhr.open("POST", "signupwithajax", true);
+
+
+                    xhr.send(formdata);
+
+                }
+
+            }
+
+
+        </script>
+    </head>
+    <body>
+
+        <div class="container">
+
+            <h1 class="jumbotron">Sign up Form</h1>
+
+            <form id="signupform">
+                <div class="form-group">
+                    <input type="text" name="username" placeholder="Enter username" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <input type="password" name="password"  placeholder="Enter password" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <input type="email" name="email"  placeholder="Enter email" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="phoneno"  placeholder="Enter phone number" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    Choose Photo: 
+                    <input type="file" name="myfile" />
+                </div>
+
+
+            </form>
+            <div class="form-group">
+                <input type="button" value="Signup" class="btn btn-success" onclick="signupwithajax()" /> 
+            </div>
+
+            <h4 id="errormessage"></h4>
+
+
+        </div>
+
+
+
+
+    </body>
+</html>

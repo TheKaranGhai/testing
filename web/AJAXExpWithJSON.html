@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <style>
+
+            .sec{
+                margin: 20px;
+                padding: 20px;
+                border:1px solid #000000;
+                border-radius: 10px;
+                background: #86cfda;
+                box-shadow: 1px 1px 7px rgba(0,0,0,0.6);
+            }
+
+
+        </style>
+
+        <script>
+
+            function fetchjson()
+            {
+
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        var res = xmlhttp.responseText;
+                        document.getElementById("sec").innerHTML = res;
+
+                        //convert the string into json
+                        var jsonobj = JSON.parse(res);
+
+                        var jsonarr = jsonobj["ans"];
+
+                        var ans = "<table class=\"table table-striped\">";
+                        ans += "<tr>";
+                        ans += "<th>Username</th>";
+                        ans += "<th>Password</th>";
+                        ans += "<th>Email</th>";
+                        ans += "<th>Age</th>";
+                        ans += "</tr>";
+
+                        for (var i = 0; i < jsonarr.length; i++) {
+
+                            var o = jsonarr[i];
+
+                            ans += "<tr>";
+                            ans += "<td>" + o.username + "</td>";
+                            ans += "<td>" + o.password + "</td>";
+                            ans += "<td>" + o.email + "</td>";
+                            ans += "<td>" + o.age + "</td>";
+                            ans += "</tr>";
+
+                        }
+
+                        ans += "</table>";
+
+                        document.getElementById("sec1").innerHTML = ans;
+
+                    }
+                };
+
+                xmlhttp.open("get", "generatejson", true);
+                xmlhttp.send();
+
+            }
+
+            function fetchjsonandmakedivs()
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        var res = xmlhttp.responseText;
+                        document.getElementById("sec").innerHTML = res;
+
+                        //convert the string into json
+                        var jsonobj = JSON.parse(res);
+
+                        var jsonarr = jsonobj["ans"];
+
+                        var ans = "";
+
+                        for (var i = 0; i < jsonarr.length; i++) {
+
+                            var o = jsonarr[i];
+
+                            ans += "<div class=\"sec\">";
+                            ans += "<h1>" + o.username + "</h1>";
+                            ans += "<h2>" + o.email + "</h2>";
+
+                            ans += "<div class=\"row\">";
+
+                            ans += "<div class=\"col-sm-8\">";
+                            ans += "<h3>" + o.password + "</h3>";
+                            ans += "</div>";
+
+                            ans += "<div class=\"col-sm-4\">";
+                            ans += "<h3 style=\"text-align:right;\"> Age: " + o.age + "</h3>";
+                            ans += "</div>";
+
+                            ans += "</div>";
+
+                            ans += "</div>";
+
+                        }
+
+
+
+                        document.getElementById("sec2").innerHTML = ans;
+
+                    }
+                };
+
+                xmlhttp.open("get", "generatejson", true);
+                xmlhttp.send();
+
+            }
+
+
+        </script>
+    </head>
+    <body>
+
+        <button onclick="fetchjson()">Fetch JSON</button>
+
+        <div id="sec" style="border:1px solid #000000;margin:20px;">
+
+
+        </div>
+
+        <div id="sec1" style="border:1px solid #000000;margin:20px;">
+
+
+        </div>
+
+
+        <button onclick="fetchjsonandmakedivs()">Fetch JSON</button>
+        <div id="sec2" style="border:1px solid #000000;margin:20px;">
+
+
+        </div>
+
+    </body>
+</html>

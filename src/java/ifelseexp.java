@@ -1,0 +1,47 @@
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ifelseexp extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        response.setContentType("text/html");
+        PrintWriter out=response.getWriter();
+        
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>If else Exp</title>");
+        out.println("</head>");
+        out.println("<body>");
+        
+        double d=Math.random();
+        
+        
+        if(d>0.5)
+        {
+            out.println("<h1>Hello, Good morning </h1>");
+        }
+        else
+        {
+            out.println("<h1>Hey , How are you</h1>");
+        }
+        
+        
+        
+        
+        out.println("</body>");
+        out.println("</html>");
+        
+        
+        
+    }
+
+}

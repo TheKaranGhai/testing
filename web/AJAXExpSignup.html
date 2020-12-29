@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+
+            function sendajaxrequest()
+            {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                var email = document.getElementById("email").value;
+                var age = document.getElementById("age").value;
+
+                var xmlhttp = new XMLHttpRequest();
+
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        var res = xmlhttp.responseText;
+
+                        alert(res);
+
+                       //to remove extra spaces
+                        res = res.trim();
+
+                        if (res == "success")
+                        {
+
+                            document.getElementById("username").value = "";
+                            document.getElementById("password").value = "";
+                            document.getElementById("email").value = "";
+                            document.getElementById("age").value = "";
+
+                        }
+                    }
+                };
+
+                var querystring = "username=" + username + "&password=" + password + "&email=" + email + "&age=" + age;
+                xmlhttp.open("get", "ajaxexpsignup?" + querystring, true);
+
+                console.log(querystring);
+                xmlhttp.send();
+                
+                       
+
+            }
+
+
+        </script>
+
+    </head>
+    <body>
+        <h1>Sign up</h1>
+
+        <form>
+            <input type="text" id="username" placeholder="Enter username" /><br><br>
+
+            <input type="password" id="password" placeholder="Enter Password" /><br><br>
+
+            <input type="email" id="email" placeholder="Enter Email" /><br><br>
+
+            <input type="number" id="age" placeholder="Enter Age" /><br><br>
+
+            <input type="button" value="Signup" onclick="sendajaxrequest()" /> 
+
+        </form>
+
+
+    </body>
+</html>

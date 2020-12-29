@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+
+
+            var xmlhttp;
+
+            function sendajaxrequest()
+            {
+                xmlhttp = new XMLHttpRequest();
+
+                //name of the function  
+                xmlhttp.onreadystatechange = go;
+
+                xmlhttp.open("GET", "ajaxexp", true);
+
+                xmlhttp.send();
+
+            }
+            function go()
+            {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                {
+                    var res = xmlhttp.responseText;
+                    document.getElementById("sec").innerHTML = res;
+
+                }
+            }
+
+
+            function sendajaxrequest1()
+            {
+
+                xmlhttp = new XMLhttpRequest();
+
+                xmlhttp.onreadystatechange = function () {
+
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        var res = xmlhttp.responseText;
+                        //only this will change
+                        document.getElementById("sec").innerHTML = res;
+
+                    }
+                };
+
+                xmlhttp.open("GET", "ajaxexp", true);
+
+                xmlhttp.send();
+            }
+
+
+
+
+
+
+
+        </script>
+
+
+    </head>
+    <body>
+        <h1>AJAX Exp</h1>
+
+        <button onclick="sendajaxrequest()" >SEND</button>
+
+        <button onclick="sendajaxrequest1()" >SEND 1</button>
+
+
+        <div id="sec">
+
+
+
+        </div>
+
+
+    </body>
+</html>

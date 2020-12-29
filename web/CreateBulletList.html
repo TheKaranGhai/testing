@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script>
+            
+            function fetchdata()
+            {
+                var xhr = new XMLHttpRequest();
+                
+                xhr.onreadystatechange = function ()
+                {
+                    if (xhr.readyState === 4 && xhr.status == 200)
+                    {
+                        //get response from server
+                        var res = xhr.responseText;
+                        res = res.trim();
+                        
+                        var jsonobj = JSON.parse(res);
+                        
+                        var jsonarr = jsonobj["ans"];
+                        
+                        var ans="<ul>";
+                        
+                        for (var i = 0; i < jsonarr.length; i++) {
+                            
+                            var o=jsonarr[i];
+                            ans+="<li>"+o.email+"</li>";
+                        }
+                        
+                        ans+="</ul>";
+                        
+                        document.getElementById("sec").innerHTML=ans;
+                    }
+                };
+                
+                xhr.open("GET", "getemails", true);
+                xhr.send();
+                
+                
+            }
+            
+        </script>
+    </head>
+    <body>
+
+        <h1>Bullet list</h1>
+
+        <button onclick="fetchdata()">Fetch Email</button>
+
+        <div id="sec">
+
+
+        </div>
+
+
+    </body>
+</html>

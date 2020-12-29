@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+
+            function sendajaxrequest()
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        var res = xmlhttp.responseText;
+                        document.getElementById("sec").innerHTML = res;
+                    }
+                };
+
+                xmlhttp.open("get", "ajaxexpview", true);
+                xmlhttp.send();
+            }
+
+
+        </script>
+    </head>
+    <body>
+
+        <button onclick="sendajaxrequest()" >Fetch Table</button> 
+
+
+        <div id="sec" style="border: 2px solid red;margin: 20px;">
+            Table will appear here
+        </div>
+    </body>
+</html>

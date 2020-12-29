@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Image exp</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <style>
+
+            .bred
+            {
+                background: red;
+                padding:20px;
+            }
+            .bblue
+            {
+                background: blue;
+                padding:40px;
+            }
+            .rad
+            {
+                border-radius:10px;
+            }
+
+        </style>
+        <script>
+
+            function changeclass()
+            {
+                document.getElementById("div1").className = "bblue rad";
+
+            }
+            function oldclass()
+            {
+                document.getElementById("div1").className = "bred";
+            }
+
+
+
+            function changeimage()
+            {
+                document.getElementById("image").src = "images/para4.jpg";
+                document.getElementById("status").innerHTML = "Clicked";
+
+            }
+
+            function changeimage1()
+            {
+                document.getElementById("image").src = "images/flowers.jpg";
+                document.getElementById("status").innerHTML = "Mouse Enter";
+            }
+
+            function changeimage2()
+            {
+                document.getElementById("image").src = "images/icon.png";
+                document.getElementById("status").innerHTML = "Mouse Out";
+            }
+
+            function changeclass1(obj)
+            {
+                obj.className = "bred";
+
+            }
+
+
+        </script>
+
+
+    </head>
+    <body>
+        <div class="container">
+
+            <h1>Image javaScript example</h1>
+
+            <img src="images/para3.jpg" width="300" height="300" id="image" onclick="changeimage()" onmouseenter="changeimage1()" onmouseout="changeimage2()"  />
+
+            <button class="btn btn-success" onclick="changeimage()" >Change</button>
+
+
+            <h1 id="status"></h1>
+
+            <hr>
+
+            <h1>Class Change With javaScript Example</h1>
+
+            <div id="div1" class="bred" onmouseenter="changeclass()" onmouseout="oldclass()" >This is Div </div>
+
+
+            <br>
+            
+            <div id="div2" class="bblue" onmouseenter="changeclass1(this)" > This is Div </div>
+
+
+
+
+        </div>
+    </body>
+</html>

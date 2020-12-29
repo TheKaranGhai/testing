@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Slider</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+        <script>
+
+
+//            var images = new Array();
+//            images[0] = "images/flowers.jpg";
+//            images[1] = "images/para3.jpg";
+//            images[2] = "images/para4.jpg";
+
+            var images = ["images/flowers.jpg", "images/para3.jpg", "images/para4.jpg", "images/pattern1.jpg"];
+            var currentindex = 0;
+            function prev()
+            {
+                currentindex--;
+                if (currentindex < 0)
+                {
+                    currentindex = images.length - 1;
+                }
+                document.getElementById("pic").src = images[currentindex];
+                document.getElementById("info").innerHTML = (currentindex + 1) + " of " + images.length;
+
+            }
+
+            function next()
+            {
+                currentindex++;
+                if (currentindex > images.length - 1)
+                {
+                    currentindex = 0;
+                }
+
+                document.getElementById("pic").src = images[currentindex];
+                document.getElementById("info").innerHTML = (currentindex + 1) + " of " + images.length;
+
+            }
+
+            var interval = null;
+
+            function autoplay()
+            {
+                if (interval == null)
+                {
+                    interval = setInterval(next, 2000);
+                    document.getElementById("status").innerHTML = "AUTOPLAY ON";
+                    
+                } else
+                {
+                    clearInterval(interval);
+                    interval = null;
+                    document.getElementById("status").innerHTML = "AUTOPLAY OFF";
+                }
+
+
+            }
+
+
+
+
+        </script>
+
+    </head>
+    <body>
+        <h1 class="text-center">JS SLIDER</h1>
+        <div class="container text-center">
+
+            <img src="images/flowers.jpg" width="500" height="400" id="pic" />
+
+
+            <br>
+            <h3 id="info"></h3>
+
+            <h3 id="status"></h3>
+            <div>
+                <br>
+
+                <button class="btn btn-success" onclick="prev()">Prev</button>
+                <button class="btn btn-success" onclick="next()">Next</button>
+                <button onclick="autoplay()" class="btn btn-primary" >AutoPlay</button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </body>
+</html>

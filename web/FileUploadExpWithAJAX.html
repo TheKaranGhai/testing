@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+
+            function uploadfile()
+            {
+                var formdata = new FormData();
+
+                var controls = document.getElementById("form1").elements;
+                var flag = 0;
+
+                for (var i = 0; i < controls.length; i++)
+                {
+                    //if name is given to every input type
+                    if (controls[i].name == "" || controls[i].name == null)
+                    {
+                        flag = 1;
+                    }
+                    if (controls[i].type == "file")
+                    {
+                        //if file is selected by user
+                        if (controls[i].files.length > 0)
+                        {
+                            formdata.append(controls[i].name, controls[i].files[0]);
+                        } else
+                        {
+                            flag = 2;
+                        }
+                    } else
+                    {
+                        // for input type text ,password, email
+                        formdata.append(controls[i].name, controls[i].value);
+                    }
+                }
+                if (flag == 1)
+                {
+                    alert("CHECK: --> Give name attribute to all controls in form");
+                } else if (flag == 2)
+                {
+                    alert("CHECK: --> Select Files for file controls");
+                } else
+                {
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.onreadystatechange = function ()
+                    {
+                        if (xhr.readyState === 4 && xhr.status == 200)
+                        {
+                            //get response from server
+                            var res = xhr.responseText;
+
+                            alert(res);
+                            console.log(res);
+
+                        }
+                    };
+
+                    xhr.open("POST", "getuploadedfile", true);
+
+
+
+                    console.log(formdata);
+
+                    xhr.send(formdata);
+
+                }
+
+            }
+
+
+        </script>
+
+    </head>
+    <body>
+        <h1>File upload</h1>
+        <form id="form1" >
+
+            <input type="text" name="username" placeholder="Username" /><br><br>
+
+
+            <input type="text" name="email" placeholder="email" /><br></br>
+
+
+            <input type="file" name="myfile" /><br><br>
+
+
+        </form>
+
+        <input type="button"  onclick="uploadfile()" value="Submit" />
+
+
+
+    </body>
+</html>

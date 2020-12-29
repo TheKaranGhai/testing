@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+        <style>
+            
+            .suggestion
+            {
+                color:white;
+            }
+            
+        </style>
+        
+        
+        <script>
+
+            function searchfn()
+            {
+                var keyword = document.getElementById("search").value;
+               
+               
+                var names = ["watson", "sherlock", "john", "sofia", "marry", "sheldon", "jack"];
+
+                var ans = "";
+                for (var i = 0; i < names.length; i++) {
+
+                    var name = names[i];
+                    if (name.indexOf(keyword) != -1)
+                    {
+
+                        ans += "<p class=\"suggestion\">" + name + "</p>";
+                    }
+
+                }
+
+
+                document.getElementById("searchresults").innerHTML = ans;
+
+
+            }
+
+
+
+
+
+
+        </script>
+    </head>
+    <body>
+
+        <div class="container">
+
+            <h1>Auto complete</h1>
+
+            <input type="text" onkeyup="searchfn()"  id="search" placeholder="Search" class="form-control" />
+
+            <div id="searchresults" style="background-color: rgba(0,0,0,0.5)" >
+
+
+
+            </div>
+        </div>
+
+    </body>
+</html>
